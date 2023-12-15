@@ -33,3 +33,5 @@ airflow db init #reiniciar o banco de dados do airflow
 airflow scheduler #reiniciar o agendador do airflow
 
 #lembrar de liberar a porta 8080 no firewall
+
+nohup airflow scheduler & #mantém funcionando mesmo fechando o terminal
