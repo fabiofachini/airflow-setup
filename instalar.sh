@@ -1,37 +1,56 @@
-sudo apt update #atualizar sistema
+#atualizar sistema
+sudo apt update
 
-sudo apt upgrade #atualizar sistema
+#atualizar sistema
+sudo apt upgrade 
 
-sudo apt install python3 python3-pip #instalar python
+#instalar python
+sudo apt install python3 python3-pip 
 
-pip3 install virtualenv #instalar ferramenta de ambiente virtual
+#instalar ferramenta de ambiente virtual
+pip3 install virtualenv 
 
-virtualenv airflow-env #criar ambiente virtual para o airflow
+#criar ambiente virtual para o airflow
+virtualenv airflow-env 
 
-source airflow-env/bin/activate #acessar ambiente virtual
+#acessar ambiente virtual
+source airflow-env/bin/activate 
 
-pip install apache-airflow #instalar airflow
+#instalar airflow
+pip install apache-airflow 
 
-airflow db init #inicia o banco de dados do airflow
+#inicia o banco de dados do airflow
+airflow db init 
 
-airflow users create --username admin --firstname fabio --lastname fachini --role Admin --email fabiofachini92@gmail.com #criar o usuário
+#criar o usuário
+airflow users create --username admin --firstname fabio --lastname fachini --role Admin --email fabiofachini92@gmail.com 
 
-airflow webserver --port 8080 #inicia o servidor web na porta 8080
+#inicia o servidor web na porta 8080
+airflow webserver --port 8080 
 
-airflow scheduler #iniciar o agendador do airflow
+#iniciar o agendador do airflow
+airflow scheduler 
 
-sudo find / -name airflow.cfg #encontrar a pasta de configuração.
+#encontrar a pasta de configuração
+sudo find / -name airflow.cfg 
 
-nano /home/<usuario>/airflow/airflow.cfg #abrir o arquivo e identificar a pasta das DAGs dags_folder = /caminho/para/sua/nova/pasta/dags
+#abrir o arquivo e identificar a pasta das DAGs dags_folder = /caminho/para/sua/nova/pasta/dags
+nano /home/<usuario>/airflow/airflow.cfg 
 
-mkdir -p /home/fabio_f/airflow/dags #caso a pasta não exista, criar pasta
+#caso a pasta não exista, criar pasta
+mkdir -p /home/fabio_f/airflow/dags 
 
-sudo wget https://raw.githubusercontent.com/fabiofachini/<arquivo>.py -P /home/<usuario>/airflow/dags #importar os códigos python para dentro da pasta
+#importar os códigos python para dentro da pasta
+sudo wget https://raw.githubusercontent.com/fabiofachini/<arquivo>.py -P /home/<usuario>/airflow/dags 
 
-airflow db init #reiniciar o banco de dados do airflow
+#reiniciar o banco de dados do airflow
+airflow db init
 
-airflow scheduler #reiniciar o agendador do airflow
+#reiniciar o agendador do airflow
+airflow scheduler
+
+#mantém funcionando mesmo fechando o terminal
+nohup airflow scheduler & 
 
 #lembrar de liberar a porta 8080 no firewall
 
-nohup airflow scheduler & #mantém funcionando mesmo fechando o terminal
